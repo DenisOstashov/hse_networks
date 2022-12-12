@@ -1,4 +1,3 @@
-import http.client as httplib
 import socket
 import subprocess
 import sys
@@ -13,12 +12,13 @@ def main():
         raise TypeError('Unknown host {}'.format(host))
     
     try:
-        conn = httplib.HTTPConnection(host)
-        conn.request("HEAD", "/")
+        result = subprocess.run(['ping', host, '-c', '1'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if result.returncode != 0:
+            print("Host {} is not reachable".format(host))
     except Exception:
         print("Host {} is not reachable".format(host))
 
-    left = 1
+    left = 68
     right = 10000
     while left + 1 < right:
         median = (left + right) // 2
