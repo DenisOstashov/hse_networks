@@ -2,7 +2,7 @@
 ![](Scheme.png)
 
 #### Ping
-![](Crypto.png)
+![](Ping.png)
 
 #### Crypto
 ![](Crypto.png)
